@@ -29,7 +29,7 @@ Este projeto é um site de comunidade desenvolvido do zero utilizando o framewor
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/seu-repo.git
+   git clone https://github.com/FernanSoCar/Comunidade-Python.git
    ```
 2. Instale as dependências:
    ```bash
