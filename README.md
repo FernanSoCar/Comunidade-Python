@@ -57,7 +57,7 @@ Este projeto é um site de comunidade desenvolvido do zero utilizando o framewor
 
 Você pode acessar uma versão de demonstração do projeto através deste link:
 
-[https://seu-dominio-ou-dploy-link.com](https://seu-dominio-ou-dploy-link.com)
+[https://seu-dominio-ou-dploy-link.com](https://comunidade-python-524dd4a571d9.herokuapp.com/)
 
 ---
 
