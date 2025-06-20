@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" data-bs-theme="dark">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Comunidade Impressionadora</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+            :root[data-theme='light'] {
+                --bg-color: #f8f9fa;
+                --text-color: #212529;
+            }
+
+            :root[data-theme='dark'] {
+                --bg-color: #121212;
+                --text-color: #f1f1f1;
+            }
+
+            body {
+                background-color: var(--bg-color);
+                color: var(--text-color);
+            }
+
+            .btn-theme-toggle {
+                position: fixed;
+                bottom: 1rem;
+                right: 1rem;
+                z-index: 999;
+            }
+        </style>
+
+
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        {% include "navbar.html" %}
+
+        <div class="container">
+            {% with mensagens = get_flashed_messages(with_categories=True) %}
+                {% if mensagens %}
+                    {% for categoria, mensagem in mensagens %}
+                        <div class="alert {{ categoria }}">
+                            {{ mensagem }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <button class="btn btn-secondary btn-theme-toggle" onclick="toggleTheme()">
+            Dark Mode
+        </button>
+
+        <script>
+            function setTheme(theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+                localStorage.setItem("theme", theme);
+            }
+
+            function toggleTheme() {
+                const currentTheme = document.documentElement.getAttribute("data-theme");
+                const newTheme = currentTheme === "dark" ? "light" : "dark";
+                setTheme(newTheme);
+            }
+
+            // Ao carregar, aplica o tema salvo
+            (function () {
+                const savedTheme = localStorage.getItem("theme") || "light";
+                setTheme(savedTheme);
+            })();
+        </script>
+
+        {% block content %}
+        {% endblock %}
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+    </body>
+</html>

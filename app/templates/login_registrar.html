@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="mt-5">Login e Registro</h1>
+        <p class="lead">Faça login ou registre-se para acessar sua conta.</p>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <h1>Login</h1>
+                <form action="" method="post">
+                {{form_login.hidden_tag() }}
+                    <div class="mb-3">
+                        <label for="email" class="form-label">{{ form_login.email.label }}</label>
+                        <input type="text" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">{{ form_login.senha.label }}</label>
+                        <input type="password" class="form-control" id="senha" name="senha" required>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="lembrar_me" name="lembrar_me">
+                        <label class="form-check-label" for="lembrar_me">{{ form_login.lembrar_me.label }}</label>
+                    </div>
+                    {{ form_login.submit_login(class="btn btn-primary mt-2") }}
+                </form>
+            </div>
+            <div class="col">
+                <h1>Registrar</h1>
+                <form action="" method="post">
+                    {{ form_registrar.hidden_tag() }}
+                    <div class="mb-3">
+                        <label for="username" class="form-label">{{ form_registrar.username.label }}</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">{{ form_registrar.email.label }}</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="senha" class="form-label">{{ form_registrar.senha.label }}</label>
+                        <input type="password" class="form-control" id="senha" name="senha" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="confirmar_senha" class="form-label">{{ form_registrar.confirmar_senha.label }}</label>
+                        <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha" required>
+                    </div>
+                    {{ form_registrar.submit_registrar(class="btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
